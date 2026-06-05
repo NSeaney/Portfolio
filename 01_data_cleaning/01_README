@@ -1,0 +1,78 @@
+Women's Concert Tours Data Cleaning Project
+Project Overview
+
+This project demonstrates a complete data-cleaning workflow using Python and Pandas. The dataset contains information about the highest-grossing concert tours by female artists, including tour rankings, gross revenue, number of shows, and tour dates.
+
+The goal of this project was to identify and correct common data quality issues before analysis.
+
+Dataset
+
+The dataset includes:
+
+Artist name
+Tour title
+Tour rankings
+Actual gross revenue
+Inflation-adjusted gross revenue
+Number of shows
+Tour years
+
+The original dataset contained several data-quality issues, including:
+
+Wikipedia citation references ([1], [a], etc.)
+Special characters (†, ‡, *)
+Currency values stored as text
+Missing values
+Mixed data types
+Year ranges stored in a single column
+Cleaning Steps Performed
+
+1. Initial Data Inspection
+Examined dataset structure
+Identified missing values
+Checked for duplicate records
+
+2. Standardized Column Names
+Removed hidden whitespace characters
+Renamed columns for consistency and readability
+
+3. Removed Wikipedia Artifacts
+Removed citation references
+Removed special symbols and footnote markers
+Cleaned tour title text
+
+4. Converted Data Types
+Converted revenue columns from text to numeric values
+Converted ranking columns to numeric format
+
+5. Handled Missing Values
+Preserved missing ranking information as NaN
+Removed the reference column used only for source citations
+
+6. Feature Engineering
+Split the Year(s) column into:
+Start Year
+End Year
+
+7. Validation
+Verified data types
+Checked remaining missing values
+Validated average gross calculations
+Technologies Used
+Python
+Pandas
+Google Colab
+Project Structure
+data-cleaning-project/
+Key Skills Demonstrated
+
+Data cleaning
+Data validation
+Feature engineering
+Missing value handling
+Data type conversion
+Regular expressions (Regex)
+Pandas data manipulation
+Final Result
+
+The final dataset is cleaned, standardized, and ready for exploratory data analysis and visualization.
