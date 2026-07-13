@@ -1,258 +1,240 @@
 # Retail Sales Analysis Using SQL
 
-## Project Overview
+## Overview
 
-This project demonstrates SQL skills through the design and analysis of a retail sales database. The database was built using a normalized relational structure consisting of Customers, Products, and Orders tables. SQL queries were used to answer common business questions related to sales performance, profitability, customer behavior, and product performance.
+This project demonstrates how SQL can be used to design a relational database and analyze retail sales data to answer real-world business questions.
 
-The goal of this project is to showcase practical SQL skills commonly used by Data Analysts and Data Scientists, including database design, joins, aggregations, subqueries, Common Table Expressions (CTEs), and window functions.
+A normalized database was built using three related tables—**Customers**, **Products**, and **Orders**—to simulate a retail sales environment. SQL was then used to explore customer purchasing behavior, product performance, regional sales trends, and overall business performance.
 
----
-
-## Technologies Used
-
-- PostgreSQL
-- DB Fiddle
-- SQL
-- GitHub
+The objective of this project is to demonstrate the SQL and analytical skills commonly required in Data Analyst, Business Intelligence, and Data Science roles.
 
 ---
 
-## Dataset
+# Skills Demonstrated
 
-This project uses a sample retail sales dataset containing customer, product, and order information.
+### SQL
+
+* SELECT statements
+* JOINs
+* Aggregate Functions (`SUM`, `AVG`, `COUNT`)
+* GROUP BY
+* HAVING
+* ORDER BY
+
+### Intermediate SQL
+
+* Subqueries
+* Common Table Expressions (CTEs)
+* Window Functions
+* Ranking Functions (`RANK`)
+* Running Totals
+* Percentage Calculations
+
+### Database Design
+
+* Relational Database Modeling
+* Primary Keys
+* Foreign Keys
+* Normalization
+* Table Relationships
+
+### Business Analytics
+
+* KPI Reporting
+* Customer Analysis
+* Product Performance
+* Regional Performance
+* Profitability Analysis
+* Revenue Analysis
+
+---
+
+# Technologies
+
+* PostgreSQL
+* SQL
+* DB Fiddle
+* Git
+* GitHub
+
+---
+
+# Project Workflow
+
+```text
+Retail Sales Data
+        │
+        ▼
+Normalized Relational Database
+        │
+        ▼
+SQL Business Analysis
+        │
+        ▼
+Business Insights & Reporting
+```
+
+---
+
+# Dataset
+
+This project uses a **custom retail sales dataset** created to simulate the operations of a small retail business.
+
+The dataset contains customer, product, and transactional sales information and was intentionally modeled using a normalized relational database structure. Although the dataset is designed for demonstration purposes, the schema and analytical queries reflect workflows commonly used in business intelligence and analytics.
 
 The dataset includes:
 
-- Customer demographics
-- Product categories
-- Sales transactions
-- Discounts
-- Profit metrics
-
-The data was modeled into a normalized relational database structure to support business analysis and reporting.
+* Customer information
+* Geographic data
+* Product catalog
+* Sales transactions
+* Order details
+* Discounts
+* Profit information
 
 ---
 
-## Database Design
+# Database Design
 
-The database consists of three related tables:
+The database consists of three related tables.
 
-### Customers
+## Customers
 
 Stores customer information and geographic details.
 
-**Key Fields:**
+**Fields**
 
-- Customer ID
-- Customer Name
-- Segment
-- Country
-- City
-- State
-- Postal Code
-- Region
+* Customer ID
+* Customer Name
+* Segment
+* Country
+* City
+* State
+* Postal Code
+* Region
 
-### Products
+---
 
-Stores product information and classifications.
+## Products
 
-**Key Fields:**
+Stores product information and product classifications.
 
-- Product ID
-- Category
-- Sub-Category
-- Product Name
+**Fields**
 
-### Orders
+* Product ID
+* Category
+* Sub-Category
+* Product Name
 
-Stores transactional sales data and links customers to products.
+---
 
-**Key Fields:**
+## Orders
 
-- Order ID
-- Order Date
-- Ship Date
-- Ship Mode
-- Customer ID
-- Product ID
-- Sales
-- Quantity
-- Discount
-- Profit
+Stores sales transactions and connects customers with purchased products.
 
-### Entity Relationship Structure
+**Fields**
+
+* Order ID
+* Order Date
+* Ship Date
+* Ship Mode
+* Customer ID
+* Product ID
+* Sales
+* Quantity
+* Discount
+* Profit
+
+---
+
+## Entity Relationship Diagram
 
 ```text
 Customers
-    |
-    | Customer ID
-    |
+    │
+    │ Customer ID
+    ▼
 Orders
-    |
-    | Product ID
-    |
+    ▲
+    │ Product ID
+    │
 Products
 ```
 
 ---
 
-## SQL Skills Demonstrated
+# Business Questions
 
-### Database Design
+The analysis answers several common business questions.
 
-- Table Creation
-- Primary Keys
-- Foreign Keys
-- Relational Database Modeling
-
-### Data Analysis
-
-- Aggregations (`SUM`, `AVG`, `COUNT`)
-- Sorting and Filtering
-- `GROUP BY`
-- Multi-Table Analysis with `JOIN`
-
-### Advanced SQL
-
-- Subqueries
-- Common Table Expressions (CTEs)
-- Window Functions
-- Ranking Functions (`RANK`)
-- Running Totals
-- Percentage Calculations
+1. What is the company's total revenue?
+2. What is the company's total profit?
+3. Which customers generate the most revenue?
+4. Which regions generate the highest sales?
+5. Which products are the most profitable?
+6. Which product categories perform best?
+7. Which customers generate above-average revenue?
+8. How do customers rank by total sales?
+9. How do sales accumulate over time?
+10. What percentage of total company revenue comes from each customer?
 
 ---
 
-## Business Questions Answered
+# Key Findings
 
-### 1. What are the company's total sales?
+The SQL analysis provides insights that can support business decision-making, including:
 
-Calculates total revenue generated from all orders.
-
-### 2. What is the company's total profit?
-
-Calculates total profit across all transactions.
-
-### 3. Who are the top customers?
-
-Identifies customers generating the highest sales revenue.
-
-### 4. Which regions generate the most revenue?
-
-Compares sales performance across geographic regions.
-
-### 5. Which products are the most profitable?
-
-Determines which products contribute the most profit.
-
-### 6. Which product categories perform best?
-
-Measures sales performance across product categories.
-
-### 7. Which customers spend more than average?
-
-Uses subqueries and aggregation to identify high-value customers.
-
-### 8. How do customers rank by sales?
-
-Uses window functions to rank customers based on revenue generated.
-
-### 9. How do sales accumulate over time?
-
-Calculates a running total of sales using a Common Table Expression and window function.
-
-### 10. What percentage of company sales comes from each customer?
-
-Analyzes customer contribution to overall company revenue.
+* Identifying the company's highest-value customers.
+* Comparing sales performance across geographic regions.
+* Measuring product and category profitability.
+* Tracking cumulative sales over time.
+* Understanding how much individual customers contribute to total revenue.
+* Demonstrating the use of SQL to transform raw transactional data into actionable business information.
 
 ---
 
-## Example Query
-
-### Top Customers by Revenue
-
-```sql
-SELECT
-    c.customer_name,
-    ROUND(SUM(o.sales), 2) AS total_sales
-FROM orders o
-JOIN customers c
-    ON o.customer_id = c.customer_id
-GROUP BY c.customer_name
-ORDER BY total_sales DESC;
-```
-
----
-
-## Repository Structure
+# Repository Structure
 
 ```text
-sql-superstore-analysis/
+03_Retail_Sales_Analysis/
 │
 ├── schema.sql
-├── sample_data.sql
-├── analysis.sql
+├── queries.sql
 └── README.md
 ```
 
-### File Descriptions
+### schema.sql
 
-**schema.sql**
-- Database schema and table definitions
-- Primary and foreign key relationships
+Defines the relational database, including table creation, primary keys, foreign keys, and relationships.
 
-**sample_data.sql**
-- Customer, product, and order records used for testing
+### queries.sql
 
-**analysis.sql**
-- Business analysis queries
-- Aggregations
-- Joins
-- Subqueries
-- CTEs
-- Window Functions
+Contains SQL queries used to answer business questions and demonstrate analytical techniques.
 
-**README.md**
-- Project documentation
-- Methodology
-- Findings and conclusions
+### README.md
+
+Provides project documentation, methodology, database design, and an overview of the business analysis.
 
 ---
 
-## Key Findings
+# Learning Outcomes
 
-Using the analysis queries, the following business insights can be generated:
+Through this project, I demonstrated the ability to:
 
-- Technology products generated the highest sales revenue.
-- Certain customers contributed a disproportionately large share of total revenue.
-- Revenue varied significantly across geographic regions.
-- Product profitability differed substantially between categories.
-- Window function analysis revealed customer rankings and cumulative sales trends.
-
----
-
-## Key Takeaways
-
-This project demonstrates the ability to:
-
-- Design a normalized relational database
-- Create and manage table relationships
-- Write efficient SQL queries
-- Analyze business data
-- Generate actionable insights
-- Use advanced SQL features such as CTEs and window functions
-- Present findings in a structured and professional format
-
-These skills are commonly required in Data Analyst, Business Analyst, Data Science, and Business Intelligence roles.
+* Design a normalized relational database
+* Model relationships using primary and foreign keys
+* Write readable and well-documented SQL queries
+* Analyze retail sales data to answer business questions
+* Apply intermediate SQL techniques such as subqueries, CTEs, and window functions
+* Present technical work in a structured and professional format
 
 ---
 
-## Future Improvements
+# Future Improvements
 
-Potential enhancements to this project include:
+Potential future enhancements include:
 
-- Importing a larger real-world retail dataset
-- Creating views for recurring business reports
-- Implementing stored procedures and triggers
-- Building interactive dashboards using Power BI or Tableau
-- Connecting the database to Python for advanced analytics and visualization
+* Replacing the custom dataset with a larger real-world retail dataset.
+* Building interactive dashboards in Power BI or Tableau.
+* Connecting the SQL database to Python for automated reporting and visualization.
+* Expanding the analysis with additional business metrics and performance dashboards.
